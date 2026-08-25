@@ -1,0 +1,77 @@
+{
+  "panel": "notifications",
+  "title": "Оповещения",
+  "columns": [
+    {
+      "code": "when",
+      "title": "Когда",
+      "type": "date",
+      "width": 200,
+      "format": "DD.MM.YYYY HH:mm",
+      "filter": { "type": "date-range", "code": "when_range", "title": "Период" },
+      "sort": ["desc", "asc"]
+    },
+    {
+      "code": "lead",
+      "title": "Сделка",
+      "type": "lead_link",
+      "width": 200,
+      "filter": { "type": "string-contains", "code": "lead_str", "title": "Сделка", "placeholder": "Название сделки" },
+      "sort": ["asc", "desc"]
+    },
+    {
+      "code": "trigger",
+      "title": "Триггер",
+      "type": "text",
+      "width": 300,
+      "filter": { "type": "string-contains", "code": "trigger_str", "title": "Триггер" }
+    },
+    {
+      "code": "notif",
+      "title": "Бот / чат",
+      "type": "channel_bot_chat",
+      "width": 340,
+      "filter": {
+        "type": "select",
+        "code": "channel",
+        "title": "Канал",
+        "options": [
+          { "value": "TG", "title": "Telegram" },
+          { "value": "MAX", "title": "MAX" },
+          { "value": "SMS", "title": "SMS" }
+        ]
+      }
+    },
+    {
+      "code": "message",
+      "title": "Сообщение",
+      "type": "longtext",
+      "width": 300,
+      "lines": 1,
+      "filter": { "type": "string-contains", "code": "message_str", "title": "Сообщение" }
+    },
+    {
+      "code": "result",
+      "title": "Результат",
+      "type": "status",
+      "width": 150,
+      "options": [
+        { "value": "sent", "title": "Отправлено", "color": "mint" },
+        { "value": "error", "title": "Ошибка", "color": "rose" }
+      ],
+      "filter": { "type": "multi-select", "code": "result_sel", "title": "Результат" },
+      "sort": ["ok_first", "err_first"]
+    },
+    {
+      "code": "details",
+      "title": "Подробности",
+      "type": "detail_action",
+      "width": 125
+    }
+  ],
+  "detail": {
+    "title": { "bind": "row.when", "format": "date:Оповещение · DD.MM.YYYY HH:mm", "default": "Оповещение" },
+    "width": "720px",
+    "layout": ["result", "dates", "trigger", "notif", "lead", "message", "history"]
+  }
+}

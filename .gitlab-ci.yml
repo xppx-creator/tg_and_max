@@ -1,0 +1,70 @@
+spec:
+  inputs:
+    skip_tests:
+      type: boolean
+      default: false
+      description: "Пропуск тестов"
+
+    skip_zabbix:
+      type: boolean
+      default: false
+      description: "Пропуск создания и подключения Zabbix"
+
+    skip_tag:
+      type: boolean
+      default: false
+      description: "Пропуск создания тега"
+
+    skip_sentry:
+      type: boolean
+      default: false
+      description: "Пропуск Sentry (создание проекта, подключение Error Tracking, создание релиза и интеграции)"
+
+    version_to_deploy:
+      type: string
+      default: "v0.0.0"
+      description: "Номер версии для деплоя. Обязательно в формате v0.0.0"
+      regex: ^(v[0-9]+\.[0-9]+\.[0-9]+)?$
+
+
+---
+variables:
+  ######################################################################################################################
+  #
+  # Ветка используемая для отправки в dev
+  #
+  BRANCH_TO_DEV_SERVER:  'dev'
+  USE_PRODUCTION_SERVER: 'yes'
+
+  ######################################################################################################################
+  #
+  # Описание Zabbix сервиса
+  #
+  ZABBIX_TYPE:           service
+  ZABBIX_LEVEL:          0
+
+  ######################################################################################################################
+  #
+  # Адрес проекта
+  #
+  PRODUCTION_DOMAIN: $CI_PROJECT_NAME.makeroi.tech
+  DEVELOPMENT_DOMAIN: $CI_PROJECT_NAME.makeroi.dev
+
+  ######################################################################################################################
+  #
+  # Параметры для Helm-чарта
+  #
+  CHART_NAME:            $CI_PROJECT_NAME
+  CHART_DESCRIPTION:     $CI_PROJECT_DESCRIPTION
+  TEST_COMMAND:          php artisan test --fail-on-warning --exclude-group=request
+
+include:
+  - component: $CI_SERVER_FQDN/makeroi.ru/libraries/backend-deploy/common@~latest
+    inputs:
+      skip_tests: $[[ inputs.skip_tests ]]
+      skip_zabbix: $[[ inputs.skip_zabbix ]]
+      skip_tag: $[[ inputs.skip_tag ]]
+      skip_sentry: $[[ inputs.skip_sentry ]]
+      version_to_deploy: $[[ inputs.version_to_deploy | expand_vars ]]
+      sentry_project_category: public # CHANGE_ME_PLEASE: public, service, client
+      sentry_project_type: backend # CHANGE_ME_PLEASE: backend, frontend, site

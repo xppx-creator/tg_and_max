@@ -1,0 +1,206 @@
+{
+  "bulkActions": [],
+  "columns": [
+    {
+      "title": "Когда",
+      "code": "when",
+      "width": 200,
+      "settings": { "type": "date", "format": "DD.MM.YYYY HH:mm" },
+      "filters": [
+        { "code": "when_range", "title": "Период", "settings": { "type": "date-range-filter" } }
+      ],
+      "sorts": [
+        { "value": "desc", "title": "Сначала новые" },
+        { "value": "asc", "title": "Сначала старые" }
+      ]
+    },
+    {
+      "title": "Сделка",
+      "code": "lead",
+      "width": 200,
+      "settings": { "type": "anchor", "target": "_blank" },
+      "filters": [
+        { "code": "lead_str", "title": "Сделка", "settings": { "type": "string-contains", "placeholder": "Название сделки" } }
+      ],
+      "sorts": [
+        { "value": "asc", "title": "А → Я" },
+        { "value": "desc", "title": "Я → А" }
+      ]
+    },
+    {
+      "title": "Триггер",
+      "code": "trigger",
+      "width": 300,
+      "settings": { "type": "text" },
+      "filters": [
+        { "code": "trigger_str", "title": "Триггер", "settings": { "type": "string-contains", "placeholder": "Поиск по триггеру" } }
+      ],
+      "sorts": []
+    },
+    {
+      "title": "Бот / чат",
+      "code": "notif",
+      "width": 340,
+      "settings": {
+        "type": "template",
+        "template": {
+          "type": "h-stack",
+          "props": { "gap": "8px", "align": "center" },
+          "children": [
+            {
+              "type": "badge",
+              "props": {
+                "text": { "$bind": "cell.channel" },
+                "color": { "$bind": "cell.channel", "$map": { "TG": "sky", "MAX": "mint" }, "$default": "silver" }
+              }
+            },
+            {
+              "type": "text-pair",
+              "props": {
+                "text": { "$bind": "cell.bot" },
+                "secondary": { "$bind": "cell.chat" }
+              }
+            }
+          ]
+        }
+      },
+      "filters": [
+        {
+          "code": "channel",
+          "title": "Канал",
+          "settings": {
+            "type": "select-filter",
+            "placeholder": "Все каналы",
+            "options": [
+              { "value": "TG", "title": "Telegram" },
+              { "value": "MAX", "title": "MAX" },
+              { "value": "SMS", "title": "SMS" }
+            ]
+          }
+        }
+      ],
+      "sorts": []
+    },
+    {
+      "title": "Сообщение",
+      "code": "message",
+      "width": 300,
+      "settings": { "type": "longtext", "lines": 1 },
+      "filters": [
+        { "code": "message_str", "title": "Сообщение", "settings": { "type": "string-contains", "placeholder": "Поиск по тексту" } }
+      ],
+      "sorts": []
+    },
+    {
+      "title": "Результат",
+      "code": "result",
+      "width": 150,
+      "settings": {
+        "type": "status",
+        "options": [
+          { "title": "Отправлено", "value": "sent", "color": "mint" },
+          { "title": "Ошибка", "value": "error", "color": "rose" }
+        ]
+      },
+      "filters": [
+        {
+          "code": "result_sel",
+          "title": "Результат",
+          "settings": {
+            "type": "multi-select",
+            "placeholder": "Все результаты",
+            "options": [
+              { "value": "sent", "title": "Отправлено" },
+              { "value": "error", "title": "Ошибка" }
+            ]
+          }
+        }
+      ],
+      "sorts": [
+        { "value": "ok_first", "title": "Сначала успешные" },
+        { "value": "err_first", "title": "Сначала ошибки" }
+      ]
+    },
+    {
+      "title": "Подробности",
+      "code": "details",
+      "width": 125,
+      "settings": {
+        "type": "template",
+        "template": {
+          "type": "icon-button",
+          "props": { "icon": "icon-info", "title": "Детали", "onClick": { "action": "detail-modal" } }
+        }
+      },
+      "filters": [],
+      "sorts": []
+    }
+  ],
+  "detail": {
+    "title": { "$bind": "row.when", "$format": "date:Оповещение · DD.MM.YYYY HH:mm", "$default": "Оповещение" },
+    "width": "720px",
+    "template": {
+      "type": "v-stack",
+      "props": { "gap": "18px" },
+      "children": [
+        {
+          "type": "key-value-list",
+          "props": {
+            "labelWidth": "150px",
+            "items": [
+              { "key": "Результат", "value": { "type": "badge", "props": {
+                "text": { "$bind": "detail.result", "$map": { "sent": "Отправлено", "error": "Ошибка" } },
+                "color": { "$bind": "detail.result", "$map": { "sent": "mint", "error": "rose" } }
+              } } },
+              { "key": "Начало", "value": { "type": "date", "props": { "value": { "$bind": "detail.started" }, "format": "DD.MM.YYYY HH:mm:ss" } } },
+              { "key": "Завершено", "value": { "type": "date", "props": { "value": { "$bind": "detail.finished" }, "format": "DD.MM.YYYY HH:mm:ss" } } },
+              { "key": "Триггер", "value": { "$bind": "detail.trigger.text" } },
+              { "key": "Бот / чат", "value": { "type": "h-stack", "props": { "gap": "8px", "align": "center" }, "children": [
+                { "type": "badge", "props": { "text": { "$bind": "detail.notif.channel" }, "color": { "$bind": "detail.notif.channel", "$map": { "TG": "sky", "MAX": "mint" }, "$default": "silver" } } },
+                { "type": "text-pair", "props": { "text": { "$bind": "detail.notif.bot" }, "secondary": { "$bind": "detail.notif.chat" } } }
+              ] } },
+              { "key": "Сделка", "value": { "type": "anchor", "props": { "title": { "$bind": "detail.lead.title" }, "href": { "$bind": "detail.lead.href" } } } },
+              { "key": "Канал", "value": { "type": "badge", "props": { "text": { "$bind": "detail.notif.channel" }, "color": { "$bind": "detail.notif.channel", "$map": { "TG": "sky", "MAX": "mint" }, "$default": "silver" } } } },
+              { "key": "ID сообщения", "value": { "$bind": "detail.message_id", "$default": "—" } },
+              { "key": "Шлюз", "value": { "$bind": "detail.gateway", "$default": "—" } },
+              { "key": "Время ответа", "value": { "$bind": "detail.response_time", "$default": "—" } }
+            ]
+          }
+        },
+        {
+          "type": "v-stack",
+          "props": { "gap": "6px" },
+          "children": [
+            { "type": "text-pair", "props": { "text": "Текст уведомления", "style": "font-weight: 600;" } },
+            { "type": "v-stack", "props": { "gap": "0px", "style": "border: 1px solid #E0E0E0; border-radius: 6px; padding: 12px 14px;" }, "children": [
+              { "type": "long-text", "props": { "text": { "$bind": "detail.message" }, "lines": 12, "multiline": true } }
+            ] }
+          ]
+        },
+        {
+          "type": "v-stack",
+          "props": { "gap": "6px" },
+          "children": [
+            { "type": "text-pair", "props": { "text": "Лог событий", "style": "font-weight: 600;" } },
+            { "type": "v-stack", "props": { "gap": "14px", "style": "border: 1px solid #E0E0E0; border-radius: 6px; padding: 12px 14px;" }, "children": {
+              "$each": "detail.history",
+              "node": {
+                "type": "v-stack",
+                "props": { "gap": "6px" },
+                "children": [
+                  { "type": "text-pair", "props": { "wrap": true, "text": { "$bind": "item.event" }, "secondary": { "$bind": "item.at", "$format": "date:DD.MM.YYYY HH:mm:ss" } } },
+                  { "type": "expandable-text", "props": {
+                    "title": { "$bind": "item.expand.title" },
+                    "description": { "$bind": "item.expand.description" },
+                    "color": { "$bind": "item.expand.color" },
+                    "icon": { "$bind": "item.expand.icon" }
+                  } }
+                ]
+              }
+            } }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+include:
+  - project: makeroi/laravel/ci
+    ref: master
+    file: /composer-package.gitlab-ci.yml

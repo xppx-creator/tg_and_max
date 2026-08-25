@@ -1,0 +1,32 @@
+{
+  "name": "@makeroi/laravel-analitycs-spa",
+  "private": true,
+  "version": "0.3.20",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@makeroi/app-config": "^1.4.2",
+    "@makeroi/cache": "^1.0.0",
+    "@makeroi/components": "^1.0.0",
+    "@makeroi/core": "^1.0.0",
+    "@makeroi/http": "^1.0.0",
+    "@makeroi/i18n": "^1.0.0",
+    "@makeroi/screen-engine": "^1.0.1",
+    "chart.js": "^4.5.1",
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.3",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "sass": "^1.99.0",
+    "typescript": "~6.0.2",
+    "vite": "^6.0.0",
+    "vue-tsc": "^3.2.8"
+  },
+  "packageManager": "pnpm@10.12.1"
+}

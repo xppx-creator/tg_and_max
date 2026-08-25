@@ -1,0 +1,3 @@
+[submodule ".cursor"]
+	path = .cursor
+	url = git@g.makeroi.dev:makeroi/laravel/cursor.git
