@@ -13,10 +13,6 @@
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
-        "makeroi/laravel-amocrm": "^0.2.37",
-        "makeroi/laravel-analitycs": "@dev",
-
-        "makeroi/laravel-masks": "^2.1.16"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

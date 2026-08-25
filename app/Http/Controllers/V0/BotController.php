@@ -11,7 +11,6 @@ use App\Models\Bot;
 use App\Telegram\TelegramWebhookRegister;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BotController extends Controller

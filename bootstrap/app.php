@@ -4,9 +4,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
-use Makeroi\Common\Http\Middleware\ForceJsonResponseMiddleware;
-use Makeroi\Common\Http\Middleware\WithExtraContentMiddleware;
-use Makeroi\Common\Http\Middleware\ResponseFormatMiddleware;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 
 return Application::configure(basePath: dirname(__DIR__))

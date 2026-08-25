@@ -6,10 +6,8 @@ use App\Console\Commands\CommandReplySender;
 use App\DTO\UpdateDTO;
 use App\Models\AuthBag;
 use App\Models\TriggerButtonLog;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 use Throwable;
 use App\Models\AttemptLog;
-use Makeroi\Amocrm\Services\Notes;
 use App\Models\Bot;
 
 class SalesbotService

@@ -12,8 +12,6 @@ use App\Http\Controllers\V1\MaskController;
 use App\Http\Middleware\VerifyMaxWebhookMiddleware;
 use App\Jobs\AmocrmWebhookDpProcessJob;
 use Illuminate\Support\Facades\Route;
-use Makeroi\Amocrm\Http\Middleware\KAuthWidgetMiddleware;
-use Makeroi\Amocrm\Services\MakeroiRoute;
 use App\Http\Middleware\VerifyTelegramWebhookMiddleware;
 
 Route::prefix('/v0')->group(function () {

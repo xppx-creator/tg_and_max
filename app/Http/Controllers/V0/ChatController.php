@@ -8,7 +8,6 @@ use App\Models\AccountChat;
 use App\Models\Bot;
 use App\Models\Chat;
 use Illuminate\Http\Request;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 
 class ChatController extends Controller
 {

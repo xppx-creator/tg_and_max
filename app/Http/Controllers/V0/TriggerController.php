@@ -7,7 +7,6 @@ use App\Http\Requests\TriggerRequest;
 use App\Models\Account;
 use App\Models\Trigger;
 use Illuminate\Http\JsonResponse;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 
 class TriggerController extends Controller
 {

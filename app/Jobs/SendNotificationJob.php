@@ -22,8 +22,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use AmoCRM\Models\LeadModel;
 use AmoCRM\Helpers\EntityTypesInterface;
-use Makeroi\Amocrm\Services\Notes;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 
 class SendNotificationJob implements ShouldQueue
 {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller

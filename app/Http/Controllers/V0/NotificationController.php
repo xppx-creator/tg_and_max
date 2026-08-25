@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Services\Analytics\AnalyticsAppJwt;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Makeroi\Analitics\Panels\AnalyticsPanel;
-use Makeroi\Analitics\Services\PanelRegistry;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 

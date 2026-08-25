@@ -5,10 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use Makeroi\Amocrm\Exceptions\Kernel\KernelApiException;
-use Makeroi\Amocrm\Kernel\Auth\Credentials\HashCredentialsBag;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
-
 class AuthBag extends Model
 {
     public $incrementing = false;

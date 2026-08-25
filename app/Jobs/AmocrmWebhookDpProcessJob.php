@@ -6,13 +6,6 @@ use AmoCRM\Helpers\EntityTypesInterface;
 use AmoCRM\Models\NoteType\ServiceMessageNote;
 use App\Notifications\NotificationProcessor;
 use App\Prototypes\AmocrmWebhookSettingsBag;
-use Makeroi\Amocrm\Enums\EntityType;
-use Makeroi\Amocrm\Enums\EventType;
-use Makeroi\Amocrm\Jobs\BaseWebhookDpProcessJob;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
-use Makeroi\Amocrm\Prototypes\WebhookDpDataPrototype;
-use Makeroi\Amocrm\Services\Notes;
-use Makeroi\Amocrm\Services\WidgetHook;
 
 class AmocrmWebhookDpProcessJob extends BaseWebhookDpProcessJob
 {

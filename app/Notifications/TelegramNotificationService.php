@@ -5,7 +5,6 @@ namespace App\Notifications;
 use App\Models\Bot;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Makeroi\Amocrm\Services\Notes;
 use Telegram\Bot\Keyboard\Keyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Throwable;

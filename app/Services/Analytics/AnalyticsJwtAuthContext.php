@@ -2,15 +2,7 @@
 
 namespace App\Services\Analytics;
 
-use Makeroi\Amocrm\Exceptions\Kernel\KernelNoCredentialsException;
-use Makeroi\Amocrm\Kernel\Auth\Prototypes\AccountPrototype;
-use Makeroi\Amocrm\Kernel\Auth\Prototypes\WidgetPrototype;
-use Makeroi\Amocrm\Kernel\Settings\SettingsBag;
-
-/**
- * Минимальный контекст makeroi_auth для panel API после проверки app JWT.
- * Достаточно для Account::forCurrentAccount() / KAuth::check() в панелях.
- */
+// также зависимости от либы
 final class AnalyticsJwtAuthContext
 {
     private readonly SettingsBag $settingsBag;

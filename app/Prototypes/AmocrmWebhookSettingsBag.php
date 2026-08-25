@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Prototypes;
-
-use Makeroi\Amocrm\Prototypes\BaseWebhookSettingBag;
-
 class AmocrmWebhookSettingsBag extends  BaseWebhookSettingBag
 {
     function rules(): array

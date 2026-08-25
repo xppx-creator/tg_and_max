@@ -13,10 +13,6 @@ use App\Models\NotificationLog;
 use App\Models\TriggerButtonLog;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
-use Makeroi\Amocrm\Services\Notes;
-use Makeroi\Masks\Facades\Masks;
-use Makeroi\Masks\Prototypes\PlaceholdersCollection;
 use App\Models\Trigger;
 use App\Models\Account;
 

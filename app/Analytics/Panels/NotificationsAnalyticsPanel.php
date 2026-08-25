@@ -4,15 +4,9 @@ namespace App\Analytics\Panels;
 
 use App\Models\Account;
 use App\Models\NotificationLog;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Middleware\AnalyticsAppJwtMiddleware;
-use Makeroi\Analitics\Panels\ModelAnalyticsPanel;
-use Makeroi\Analitics\Detail\DetailModal;
-use Makeroi\Analitics\Detail\DetailNode;
-use Makeroi\Analitics\Columns\Column;
-
 class NotificationsAnalyticsPanel extends ModelAnalyticsPanel
 {
     public static function slug(): string

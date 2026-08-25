@@ -6,9 +6,6 @@ use App\Services\Analytics\AnalyticsAppJwt;
 use App\Services\Analytics\AnalyticsJwtAuthContext;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Http\Request;
-use Makeroi\Amocrm\Kernel\Auth\Prototypes\AccountPrototype;
-use Makeroi\Amocrm\Kernel\Auth\Prototypes\WidgetPrototype;
 use Symfony\Component\HttpFoundation\Response;
 
 final class AnalyticsAppJwtMiddleware

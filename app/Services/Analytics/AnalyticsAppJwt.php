@@ -7,7 +7,6 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Illuminate\Auth\AuthenticationException;
 use InvalidArgumentException;
-use Makeroi\Amocrm\Kernel\Auth\KAuth;
 use UnexpectedValueException;
 
 final class AnalyticsAppJwt
